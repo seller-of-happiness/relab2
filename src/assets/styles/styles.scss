@@ -1,0 +1,41 @@
+@use './variables.scss' as vars;
+
+.animate__delay-03s {
+  animation-delay: 0.3s;
+}
+
+.animate__delay-06s {
+  animation-delay: 0.6s;
+}
+
+.animate__delay-09s {
+  animation-delay: 0.9s;
+}
+
+.animate__delay-12s {
+  animation-delay: 1.2s;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: 'SuisseIntl';
+  color: #282828;
+}
+
+section {
+  padding-left: vars.$container-padding;
+  padding-right: vars.$container-padding;
+
+  @media (max-width: 1280px) {
+    padding-left: vars.$container-padding-1280;
+    padding-right: vars.$container-padding-1280;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 vars.$container-padding-mobile;
+  }
+
+  img {
+    width: 100%;
+  }
+}

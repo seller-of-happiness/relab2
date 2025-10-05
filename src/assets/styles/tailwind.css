@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "./fluid-font.css";
+
+@font-face {
+    font-family: 'SuisseIntl';
+    src: url("../font/SuisseIntl-Medium-WebXL.eot"); /* IE 9 Compatibility Mode */
+    src: url("../font/SuisseIntl-Medium-WebXL.eot?#iefix") format("embedded-opentype"), url("../font/SuisseIntl-Medium-WebXL.woff2") format("woff2"), url("../font/SuisseIntl-Medium-WebXL.woff") format("woff"), url("../font/SuisseIntl-Medium-WebXL.ttf") format("truetype"), url("../font/SuisseIntl-Medium-WebXL.svg") format("svg"); /* Chrome < 4, Legacy iOS */
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SuisseIntl';
+    src: url("../font/SuisseIntl-Regular-WebXL.eot"); /* IE 9 Compatibility Mode */
+    src: url("../font/SuisseIntl-Regular-WebXL.eot?#iefix") format("embedded-opentype"), url("../font/SuisseIntl-Regular-WebXL.woff2") format("woff2"), url("../font/SuisseIntl-Regular-WebXL.woff") format("woff"), url("../font/SuisseIntl-Regular-WebXL.ttf") format("truetype"), url("../font/SuisseIntl-Regular-WebXL.svg") format("svg"); /* Chrome < 4, Legacy iOS */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SuisseIntl';
+    src: url("../font/SuisseIntl-Light-WebXL.eot"); /* IE 9 Compatibility Mode */
+    src: url("../font/SuisseIntl-Light-WebXL.eot?#iefix") format("embedded-opentype"), url("../font/SuisseIntl-Light-WebXL.woff2") format("woff2"), url("../font/SuisseIntl-Light-WebXL.woff") format("woff"), url("../font/SuisseIntl-Light-WebXL.ttf") format("truetype"), url("../font/SuisseIntl-Light-WebXL.svg") format("svg"); /* Chrome < 4, Legacy iOS */
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --font-suisse: 'SuisseIntl', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans';
+    --color-black: #282828;
+    --color-gray: #dadada;
+    --text-1xl: 22px;
+    --tracking-1: 1px;
+    --tracking-05: 0.5px;
+    --tracking-04: 0.4px;
+    --tracking-44: 4.4px;
+
+    --breakpoint-tb: 980px;
+}

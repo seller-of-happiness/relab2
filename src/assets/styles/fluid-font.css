@@ -1,0 +1,38 @@
+.fluid-font {
+    --bp: 1280;
+    --vw-adjusted: clamp(360px, 100vw, calc(var(--bp) * 1px));
+    
+    font-size: clamp(
+        calc(var(--font-min) * 1px),
+        calc(
+            var(--font-min) * 1px + 
+            (var(--font-mid) - var(--font-min)) * 
+            ((var(--vw-adjusted) - 360px) / (var(--bp) - 360))
+        ),
+        calc(var(--font-mid) * 1px)
+    );
+
+    line-height: clamp(var(--lh-min), var(--lh-mid), var(--lh-max)) !important;
+}
+
+@media (min-width: 1279px) {
+    .fluid-font {
+        font-size: clamp(
+            calc(var(--font-mid) * 1px),
+            calc(
+                var(--font-mid) * 1px + 
+                (var(--font-max) - var(--font-mid)) * 
+                ((100vw - 1279px) / (1920 - 1279))
+            ),
+            calc(var(--font-max) * 1px)
+        );
+
+        line-height: clamp(var(--lh-min), var(--lh-mid), var(--lh-max)) !important;
+    }
+}
+
+
+
+.fluid-max-w {
+    max-width: clamp(calc(var(--width-min) * 1px), calc( var(--width-min) * 1px +  (var(--width-max) - var(--width-min)) *  ((100vw - 360px) / (1920 - 360)) ), calc(var(--width-max) * 1px));
+}
