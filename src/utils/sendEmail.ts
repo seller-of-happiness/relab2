@@ -15,7 +15,7 @@ export interface SendEmailResponse {
   message?: string
 }
 
-const ENDPOINT = 'https://coralclub.ru/restApi/v4/notify/sendEmail'
+const ENDPOINT = 'https://ru.coral.club/restApi/v4/notify/sendEmail'
 
 export async function sendEmail(
   payload: SendEmailPayload

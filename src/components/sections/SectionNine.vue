@@ -4,7 +4,7 @@ section(class="section-nine w-full h-full pt-[62px] pb-[80px]")
     .title(class="fluid-font block md:hidden" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") Время выбирать себя
     .text(class="font-light fluid-font max-w-[640px] mt-[22px] block md:hidden" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне и расскажите о вашей главной цели, а я подберу для вас наилучший вариант старта.
 
-    .left(class="w-full md:w-[45%] flex justify-center pt-[93px]" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
+    .left(class="w-full md:w-[45%] flex justify-center pt-[93px]" v-if="userStore.user" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
       img(:src="userStore.user?.avatar", alt="alt" class="max-w-[700px] w-full h-fit rounded-full")
 
     .right(class="w-full md:w-[55%] pl-[2.87%]")

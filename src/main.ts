@@ -10,12 +10,19 @@ import { useUserStore } from './store/userStore'
 
 const pinia = createPinia()
 
+// Проверяем наличие параметра user
+const urlParams = new URLSearchParams(window.location.search)
+const userParam = urlParams.get('user')
+const hasUserParam = userParam !== null
+
 // Инициализируем систему модальных окон
 setupModals()
 
 const app = createApp(App)
 app.directive('animate-on-scroll', vAnimateOnScroll)
 app.use(pinia)
+app.provide('userParam', userParam)
+app.provide('hasUserParam', hasUserParam)
 
 // Инициализируем аватар после монтирования приложения
 app.mount('#app')

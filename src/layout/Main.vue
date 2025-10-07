@@ -1,5 +1,5 @@
 <template lang="pug">
-main
+main(:class="{'h-screen w-screen overflow-hidden': !hasUserParam}" v-if="userStore.user")
   SectionOne
   SectionTwo
   SectionThree
@@ -10,6 +10,10 @@ main
   SectionEight
   SectionNine
   Footer
+
+.not-user(v-if="!hasUserParam" class="z-[999999] fixed left-0 top-0 w-screen inset-0 backdrop-blur-md flex justify-center items-center")
+  .text-modal(class="w-[94%] max-w-[400px] p-5 text-center flex justify-center items-center bg-white")
+   |Участие в марафоне возможно только по приглашению куратора. Пожалуйста, обратитесь к вашему рекомендателю, он поможет найти куратора в вашей структуре.
 </template>
 
 <script setup lang="ts">
@@ -24,6 +28,17 @@ import SectionSeven from '@/components/sections/SectionSeven.vue'
 import SectionEight from '@/components/sections/SectionEight.vue'
 import SectionNine from '@/components/sections/SectionNine.vue'
 import Footer from '@/layout/Footer.vue'
+import { inject } from 'vue'
+import { useUserStore } from '@/store/userStore'
+
+const userStore = useUserStore()
+
+const userParam = inject<string | null>('userParam', null)
+const hasUserParam = inject<boolean>('hasUserParam', false)
 </script>
 
-<style scoped></style>
+<style scoped>
+.not-user {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+</style>
