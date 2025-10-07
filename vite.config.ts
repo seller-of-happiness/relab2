@@ -13,13 +13,13 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://ru.coralorder.online/restApi/v4',
+        target: 'https://ru.coral.club/restApi/v4',
         changeOrigin: true,
         secure: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
       '/avatar': {
-        target: 'https://ru.coralorder.online/restApi',
+        target: 'https://ru.coral.club/restApi',
         changeOrigin: true,
         secure: true,
         rewrite: (path) => path.replace(/^\/avatar/, '/avatar'),

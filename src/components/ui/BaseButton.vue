@@ -53,10 +53,6 @@ withDefaults(defineProps<Props>(), {
   text-transform: capitalize;
   padding: 0;
   letter-spacing: 0.3px;
-
-  &:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
 }
 
 .btn-orange {

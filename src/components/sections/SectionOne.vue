@@ -11,13 +11,13 @@ section(class="section-one w-full h-full pb-[27px] xl:pb-10" v-if="userStore.use
         .text(class="fluid-font font-light max-w-[290px] xl:max-w-[345px]" style="--font-min: 14; --font-mid: 14; --font-max: 22; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2;" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-09s' }") Персонализированный подход к&nbsp;осознанной заботе о&nbsp;себе
         .text(class="fluid-font font-light mt-5 md:mt-0 max-w-[245px] xl:max-w-[290px]" style="--font-min: 14; --font-mid: 14; --font-max: 22; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2;" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-06s' }") Система из трех этапов с&nbsp;моей личной поддержкой
       
-      BaseButton(class="btn-orange mt-[97px] xl:mt-[150px] hidden md:block" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }" @click="openAuthModal()")
+      BaseButton(class="btn-orange mt-[97px] xl:mt-[150px] hidden md:block" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }" @click="scrollTo('section-three')")
         span(class="z-10 relative") Как это работает? 
 
     .right(class="mt-6 md:-mt-[100px] xl:-mt-[150px] w-full md:w-[32%] md:mr-[8.5%] relative pb-5 md:pb-0")
       SectionOneSvg
       div(class="flex md:block items-center justify-between mt-7 md:mt-0")
-        BaseButton(class="btn-orange block md:hidden" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
+        BaseButton(class="btn-orange block md:hidden" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }" @click="scrollTo('section-three')")
           span(class="z-10 relative") Как это работает?
         .text(class="text-black md:text-white text-center fluid-font relative md:absolute md:bottom-5 md:ml-[50%] md:-translate-x-1/2" style="--font-min: 12; --font-mid: 18; --font-max: 28; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2;" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") {{ userStore.user.name }} {{ userStore.user.family }}
 </template>
@@ -32,8 +32,11 @@ import { useModal } from '@/composables/useModal'
 const userStore = useUserStore()
 const { openModal } = useModal()
 
-const openAuthModal = () => {
-  openModal({ type: 'auth' })
+const scrollTo = (id: string) => {
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 </script>
 
