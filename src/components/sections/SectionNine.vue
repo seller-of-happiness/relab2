@@ -5,7 +5,7 @@ section(class="section-nine w-full h-full pt-[62px] pb-[80px]" id="section-nine"
     .text(class="font-light fluid-font max-w-[640px] mt-[22px] block md:hidden" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне и расскажите о вашей главной цели, а я подберу для вас наилучший вариант старта.
 
     .left(class="w-full md:w-[45%] flex justify-center pt-[93px]" v-if="userStore.user" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
-      img(:src="userStore.user?.avatar", alt="alt" class="max-w-[700px] w-full h-fit rounded-full")
+      img(:src="userStore.user?.avatar", alt="alt" class="max-w-[400px] w-full h-fit rounded-full")
 
     .right(class="w-full md:w-[55%] pl-[2.87%]")
       .title(class="fluid-font hidden md:block" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") Время выбирать себя
@@ -119,8 +119,6 @@ const login = async () => {
     const recipientName =
       `${userStore.user?.name ?? ''} ${userStore.user?.family ?? ''}`.trim() ||
       'Получатель'
-    const memberId =
-      userStore.user?.id || userStore.getMemberIdFromUrl() || 'Нет данных'
 
     await sendEmail({
       eventCode: 'LANDING_HEALTH_CONCEPT_ORDER_OWNER',
@@ -128,7 +126,7 @@ const login = async () => {
       languageCode: 'ru',
       email: recipientEmail, // получатель (консультант)
       NAME: recipientName,
-      NEW_USER_MEMBER_ID: memberId,
+      NEW_USER_MEMBER_ID: '-',
       NEW_USER_NAME: name.value,
       NEW_USER_EMAIL: email.value,
       NEW_USER_PHONE: phone.value,

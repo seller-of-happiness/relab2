@@ -3,15 +3,15 @@ section(class="section-four w-full h-full px-10 xl:pb-[96px] ")
   .flex(class="flex-col md:flex-row")
     .left(class="flex-col justify-between w-ful md:w-1/2 pr-10")
       .top(class="mt-[98px] xl:mt-[140px]")
-        .title(class="fluid-font" style="--font-min: 28; --font-mid: 40; --font-max: 60; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }") Три этапа заботы о&nbsp;себе
+        .title(class="fluid-font" style="--font-min: 28; --font-mid: 40; --font-max: 60; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }") Три этапа заботы о&nbsp;себе 
           br(class="hidden tb:block")
-          |с&nbsp;моей поддержкой
+          | с&nbsp;моей поддержкой
 
         .text(class="font-light fluid-font max-w-[600px] mt-[18px] xl:mt-[28px]" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-06s' }") Вместе мы пройдем комфортный и понятный путь из 3 этапов — гидратация, защита и очищение. Все уже продумано за вас: система, продукты, этапы. 
 
       .bottom(class="mt-[248px] xl:mt-[404px] hidden md:block")
         .text(class="font-light fluid-font max-w-[450px] xl:max-w-[600px]" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-03s' }") Моя роль — сделать так, чтобы этот путь подошел именно вам, чтобы вы чувствовали поддержку и видели изменения.
-        BaseButton(class="btn-orange mt-[42px]" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-06s' }" @click="scrollTo('section-six')")
+        BaseButton(class="btn-orange mt-[42px]" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-06s' }" @click="scrollTo('section-nine')")
           span(class="z-10 relative") Хочу начать
     .right(class="w-full md:w-1/2")
       .left(class="hidden md:block")
@@ -42,7 +42,7 @@ section(class="section-four w-full h-full px-10 xl:pb-[96px] ")
       
       .bottom(class="block md:hidden mb-16")
         .text(class="font-light fluid-font max-w-[450px] xl:max-w-[600px]" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-03s' }") Моя роль — сделать так, чтобы этот путь подошел именно вам, чтобы вы чувствовали поддержку и видели изменения.
-        BaseButton(class="btn-orange mt-[42px]" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-06s' }" @click="scrollTo('section-six')")
+        BaseButton(class="btn-orange mt-[42px]" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-06s' }" @click="scrollTo('section-nine')")
           span(class="z-10 relative") Хочу начать
 </template>
 
@@ -51,6 +51,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import { ref } from 'vue'
 
 const scrollTo = (id: string) => {
+  console.log(id)
   const el = document.getElementById(id)
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })

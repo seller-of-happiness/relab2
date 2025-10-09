@@ -1,7 +1,7 @@
 <template lang="pug">
 section(class="section-three w-full h-full px-10 pt-9 xl:pt-[18px] pb-[34px] xl:pb-16 z-20 relative" id="section-three")
   .flex(class="flex-col")
-    .title(class="fluid-font" style="--font-min: 28; --font-mid: 40; --font-max: 60; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }") Ваше решение — системная
+    .title(class="fluid-font" style="--font-min: 28; --font-mid: 40; --font-max: 60; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }") Ваше решение — системная 
       br(class="hidden md:block")
       | поддержка организма
     .text(class="font-light fluid-font max-w-[720px] mt-[18px] xl:mt-[28px]" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-06s' }") Многие воспринимают wellness как тренд. Я рассматриваю его как систему: целостный подход, профилактика и&nbsp;долгосрочный баланс, заложенные в&nbsp;Концепции Здоровья.

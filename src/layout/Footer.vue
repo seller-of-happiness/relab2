@@ -7,8 +7,12 @@ footer(class="pt-8 pb-[50px]" id="contacts")
         br
         span(class="hidden md:inline-block") 
           | Напишите или позвоните в Coral Club:
+          br
+          a(href="tel:8(800)1000577" class="underline") 8(800)1000577
         span(class="text-sm mt-8 inline-block md:hidden") 
           | Напишите или позвоните в Coral Club:
+          br
+          a(href="tel:8(800)1000577" class="underline") 8(800)1000577
 
       //- .social.gap-8.w-full(class="flex tb:hidden mt-8")
       //-   a(class="social-link" href="#")

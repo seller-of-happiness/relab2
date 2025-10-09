@@ -83,7 +83,8 @@ export const useUserStore = defineStore('userStore', () => {
     try {
       const hash = generateAvatarHash(memberId)
       // Используем локальный прокси вместо прямого запроса
-      const proxyUrl = `/avatar/${memberId}/${hash}`
+      //const proxyUrl = `/avatar/${memberId}/${hash}`
+      const proxyUrl = `https://ru.coral.club/restApi/avatar/${memberId}/${hash}`
       const avatarUrl = `https://ru.coral.club/restApi/avatar/${memberId}/${hash}`
 
       console.log('Fetching avatar from proxy:', proxyUrl)

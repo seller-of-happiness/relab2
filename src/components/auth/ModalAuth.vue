@@ -3,13 +3,13 @@
 
 
     .left(class="w-full md:w-[45%] flex justify-center items-center" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
-      img(:src="userStore.user?.avatar", alt="alt" class="max-w-[300px] md:max-w-[700px] w-full h-fit rounded-full")
+      img(:src="userStore.user?.avatar", alt="alt" class="max-w-[300px] md:max-w-[650px] w-full h-auto rounded-full")
 
     .right(class="w-full md:w-[55%] md:pl-[2.87%] h-full flex flex-col justify-between")
       .title(class="fluid-font hidden md:block" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") Время выбирать себя
       .text(class="font-light fluid-font max-w-[640px] mt-[22px] hidden md:block" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне и расскажите о вашей главной цели, а я подберу для вас наилучший вариант старта.
 
-      div(class="authForm flex flex-col mt-3 max-w-[640px]" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
+      div(class="authForm flex flex-col mt-3 max-w-[640px] pb-7" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
         FloatingInput(
           v-model="name"
           label="Имя"
@@ -34,11 +34,10 @@
           @focus="clearError()"
         )
 
-        // Отображение ошибки
         .error-message(v-if="error" class="text-red-500 text-sm mt-2")
           | {{ error }}
 
-        BaseButton(class="btn-orange mt-5 md:mt-16 max-w-full md:max-w-fit" @click="login" :disabled="isLoading")
+        BaseButton(class="btn-orange mt-3 md:mt-16 max-w-full md:max-w-fit" @click="login" :disabled="isLoading")
           span(class="z-10 relative") {{ isLoading ? 'Отправка...' : 'Связаться' }}
 </template>
 
@@ -107,8 +106,6 @@ const login = async () => {
     const recipientName =
       `${userStore.user?.name ?? ''} ${userStore.user?.family ?? ''}`.trim() ||
       'Получатель'
-    const memberId =
-      userStore.user?.id || userStore.getMemberIdFromUrl() || 'Нет данных'
 
     await sendEmail({
       eventCode: 'LANDING_HEALTH_CONCEPT_ORDER_OWNER',
@@ -116,26 +113,33 @@ const login = async () => {
       languageCode: 'ru',
       email: recipientEmail,
       NAME: recipientName,
-      NEW_USER_MEMBER_ID: memberId,
+      NEW_USER_MEMBER_ID: '-',
       NEW_USER_NAME: name.value,
       NEW_USER_EMAIL: email.value,
       NEW_USER_PHONE: phone.value,
     })
 
-    openModal({
-      type: 'congratulations',
-      size: 'sm',
-      props: {
-        titleText: 'Спасибо!',
-        textLines: ['Ваш wellness-консультант скоро свяжется с вами.'],
-        buttonText: 'Закрыть',
-        showHeart: true,
-      },
-    })
+    // Close current auth modal first so the congratulations modal stays visible on top
+    closeModal()
+    // Defer opening long enough for the previous modal to finish closing and
+    // to avoid the original click event affecting the new modal
+    setTimeout(() => {
+      openModal({
+        type: 'congratulations',
+        size: 'sm',
+        closeOnBackdrop: false,
+        closeOnEscape: false,
+        props: {
+          titleText: 'Спасибо!',
+          textLines: ['Ваш wellness-консультант скоро свяжется с вами.'],
+          buttonText: 'Закрыть',
+          showHeart: true,
+        },
+      })
+    }, 400)
     name.value = ''
     phone.value = ''
     email.value = ''
-    closeModal()
   } catch (err) {
     error.value = 'Произошла ошибка при отправке формы. Попробуйте еще раз.'
     console.error('Ошибка отправки формы:', err)
@@ -152,9 +156,15 @@ const goBack = () => {
 <style lang="scss" scoped>
 .wrapper-modal {
   height: calc(100vh - 120px);
+  @media (max-width: 767px) {
+    height: fit-content;
+  }
 }
 
 .field-wrapper {
   margin-top: 12px !important;
+  @media (max-width: 767px) {
+    margin-top: 2rem !important;
+  }
 }
 </style>

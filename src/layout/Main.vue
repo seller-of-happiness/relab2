@@ -13,7 +13,7 @@ main(:class="{'h-screen w-screen overflow-hidden': !hasUserParam}" v-if="userSto
 
 .not-user(v-if="!hasUserParam" class="z-[999999] fixed left-0 top-0 w-screen inset-0 backdrop-blur-md flex justify-center items-center")
   .text-modal(class="w-[94%] max-w-[400px] p-5 text-center flex justify-center items-center bg-white")
-   |Участие в марафоне возможно только по приглашению куратора. Пожалуйста, обратитесь к вашему рекомендателю, он поможет найти куратора в вашей структуре.
+    |Участие в марафоне возможно только по приглашению куратора. Пожалуйста, обратитесь к вашему рекомендателю, он поможет найти куратора в вашей структуре.
 </template>
 
 <script setup lang="ts">

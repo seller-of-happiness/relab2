@@ -1,19 +1,34 @@
 <template>
   <svg
     viewBox="0 0 554 554"
+    width="400"
+    height="400"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
     <g clip-path="url(#clip0_4009_518)">
+      <foreignObject v-if="avatarUrl" x="27" y="27" width="500" height="500">
+        <div
+          xmlns="http://www.w3.org/1999/xhtml"
+          :style="{
+            width: '96%',
+            height: '96%',
+            backgroundImage: avatarUrl ? `url(${avatarUrl})` : undefined,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            margin: '50%',
+            transform: 'translate3d(-50%, -50%, 0)',
+          }"
+        />
+      </foreignObject>
       <rect
-        x="3"
-        y="-93"
-        width="514"
-        height="686"
-        :fill="
-          avatarUrl ? `url(#pattern0_4009_518)` : 'url(#pattern0_4009_518)'
-        "
+        v-else
+        x="27"
+        y="27"
+        width="500"
+        height="500"
+        fill="url(#pattern0_4009_518)"
       />
     </g>
     <path
@@ -22,22 +37,14 @@
       fill="#282828"
     />
     <defs>
+      <!-- Original fallback pattern kept intact for base64 placeholder -->
       <pattern
         id="pattern0_4009_518"
         patternContentUnits="objectBoundingBox"
         width="1"
         height="1"
       >
-        <image
-          v-if="avatarUrl"
-          :xlink:href="avatarUrl"
-          width="2316"
-          height="3088"
-          preserveAspectRatio="xMidYMid slice"
-          transform="matrix(0.000432199 0 0 0.000323834 -0.000486381 0)"
-        />
         <use
-          v-else
           xlink:href="#image0_4009_518"
           transform="matrix(0.000432199 0 0 0.000323834 -0.000486381 0)"
         />
