@@ -18,7 +18,9 @@ section(class="section-seven w-full h-full px-10 pt-[82px] pb-[144px]")
         div(class="flex flex-col h-full")
           .top
             .avatar(class="rounded-full w-[94px] h-[94px]")
-              img(src="@/assets/images/section-7-a1.png", alt="alt")
+              picture(class="mt-16 tb:mt-8")
+                source(srcset="@/assets/images/section-7-a1.webp" type="image/webp")
+                img(src="@/assets/images/section-7-a1.png" alt="" class="section-image" loading="lazy")
           .middle
             .quote(class="mt-[80px]")
               svg(viewBox="0 0 19 19" class="max-w-[19px]")
@@ -33,7 +35,9 @@ section(class="section-seven w-full h-full px-10 pt-[82px] pb-[144px]")
         div(class="flex flex-col justify-between h-full")
           .top
             .avatar(class="rounded-full w-[94px] h-[94px]")
-              img(src="@/assets/images/section-7-a2.png", alt="alt")
+              picture(class="mt-16 tb:mt-8")
+                source(srcset="@/assets/images/section-7-a2.webp" type="image/webp")
+                img(src="@/assets/images/section-7-a2.png" alt="" class="section-image" loading="lazy")
           .middle
             .quote(class="mt-[80px]")
               svg(viewBox="0 0 19 19" class="max-w-[19px]")
@@ -48,7 +52,9 @@ section(class="section-seven w-full h-full px-10 pt-[82px] pb-[144px]")
         div(class="flex flex-col justify-between h-full")
           .top
             .avatar(class="rounded-full w-[94px] h-[94px]")
-              img(src="@/assets/images/section-7-a3.png", alt="alt")
+              picture(class="mt-16 tb:mt-8")
+                source(srcset="@/assets/images/section-7-a3.webp" type="image/webp")
+                img(src="@/assets/images/section-7-a3.png" alt="" class="section-image" loading="lazy")
           .middle
             .quote(class="mt-[80px]")
               svg(viewBox="0 0 19 19" class="max-w-[19px]")
@@ -63,7 +69,9 @@ section(class="section-seven w-full h-full px-10 pt-[82px] pb-[144px]")
         div(class="flex flex-col justify-between h-full")
           .top
             .avatar(class="rounded-full w-[94px] h-[94px]")
-              img(src="@/assets/images/section-7-a4.png", alt="alt")
+              picture(class="mt-16 tb:mt-8")
+                source(srcset="@/assets/images/section-7-a4.webp" type="image/webp")
+                img(src="@/assets/images/section-7-a4.png" alt="" class="section-image" loading="lazy")
           .middle
             .quote(class="mt-[80px]")
               svg(viewBox="0 0 19 19" class="max-w-[19px]")

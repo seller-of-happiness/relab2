@@ -3,11 +3,12 @@
 
 
     .left(class="w-full md:w-[45%] flex justify-center items-center" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
-      img(:src="userStore.user?.avatar", alt="alt" class="max-w-[300px] md:max-w-[650px] w-full h-auto rounded-full")
+      img(:src="userStore.user?.avatar", alt="alt" class="max-w-[150px] md:max-w-[400px] w-full h-auto rounded-full")
 
     .right(class="w-full md:w-[55%] md:pl-[2.87%] h-full flex flex-col justify-between")
-      .title(class="fluid-font hidden md:block" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") Время выбирать себя
-      .text(class="font-light fluid-font max-w-[640px] mt-[22px] hidden md:block" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне и расскажите о вашей главной цели, а я подберу для вас наилучший вариант старта.
+      div
+        .title(class="fluid-font hidden md:block" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") Время выбирать себя
+        .text(class="font-light fluid-font max-w-[640px] mt-[22px] hidden md:block" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне, и мы вместе выберем комфортный вариант для вашего старта
 
       div(class="authForm flex flex-col mt-3 max-w-[640px] pb-7" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
         FloatingInput(
@@ -37,8 +38,29 @@
         .error-message(v-if="error" class="text-red-500 text-sm mt-2")
           | {{ error }}
 
-        BaseButton(class="btn-orange mt-3 md:mt-16 max-w-full md:max-w-fit" @click="login" :disabled="isLoading")
-          span(class="z-10 relative") {{ isLoading ? 'Отправка...' : 'Связаться' }}
+        .flex(class="items-center justify-between mt-3 md:mt-16 flex-col sm:flex-row")
+          BaseButton(class="btn-orange mt-5 sm:mt-0 max-w-full md:max-w-fit" @click="login" :disabled="isLoading")
+            span(class="z-10 relative") {{ isLoading ? 'Отправка...' : 'Связаться' }}
+
+          .socials(class="flex mt-10 sm:mt-0 pl-0 sm:pl-10")
+            a(:href="`https://t.me/${userStore.user?.telegram}`" v-if="userStore.user?.telegram")
+              svg(viewBox="0 0 26 23")
+                use(href="/src/assets/images/img-svg.svg#telegram") 
+            a(:href="`https://instagram.com/${userStore.user?.instagram}`" v-if="userStore.user?.instagram")
+              svg(viewBox="0 0 27 27")
+                use(href="/src/assets/images/img-svg.svg#instagram") 
+            a(:href="`https://vk.com/${userStore.user?.vk}`" v-if="userStore.user?.vk")
+              svg(viewBox="0 0 29 19")
+                use(href="/src/assets/images/img-svg.svg#vk") 
+            a(:href="`https://wa.me/${userStore.user?.whatsapp}`" v-if="userStore.user?.whatsapp")
+              svg(viewBox="0 0 25 25")
+                use(href="/src/assets/images/img-svg.svg#whats") 
+            a(:href="`https://viber.me/${userStore.user?.viber}`" v-if="userStore.user?.viber")
+              svg(viewBox="0 0 25 27")
+                use(href="/src/assets/images/img-svg.svg#viber") 
+            a(:href="`https://linkedin.com/in/${userStore.user?.linkedin}`" v-if="userStore.user?.linkedin")
+              svg(viewBox="0 0 25 24")
+                use(href="/src/assets/images/img-svg.svg#in") 
 </template>
 
 <script setup lang="ts">
@@ -165,6 +187,20 @@ const goBack = () => {
   margin-top: 12px !important;
   @media (max-width: 767px) {
     margin-top: 2rem !important;
+  }
+}
+
+.socials {
+  a {
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  svg {
+    max-width: 26px;
+    min-width: 20px;
   }
 }
 </style>

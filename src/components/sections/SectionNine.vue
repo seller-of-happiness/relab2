@@ -2,14 +2,14 @@
 section(class="section-nine w-full h-full pt-[62px] pb-[80px]" id="section-nine")
   .flex(class="flex-col md:flex-row")
     .title(class="fluid-font block md:hidden" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") Время выбирать себя
-    .text(class="font-light fluid-font max-w-[640px] mt-[22px] block md:hidden" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне и расскажите о вашей главной цели, а я подберу для вас наилучший вариант старта.
+    .text(class="font-light fluid-font max-w-[640px] mt-[22px] block md:hidden" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне, и мы вместе выберем комфортный вариант для вашего старта
 
     .left(class="w-full md:w-[45%] flex justify-center pt-[93px]" v-if="userStore.user" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
-      img(:src="userStore.user?.avatar", alt="alt" class="max-w-[400px] w-full h-fit rounded-full")
+      img(:src="userStore.user?.avatar", alt="alt" class="max-w-[400px] w-full h-fit rounded-full" loading="lazy")
 
     .right(class="w-full md:w-[55%] pl-[2.87%]")
       .title(class="fluid-font hidden md:block" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") Время выбирать себя
-      .text(class="font-light fluid-font max-w-[640px] mt-[22px] hidden md:block" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне и расскажите о вашей главной цели, а я подберу для вас наилучший вариант старта.
+      .text(class="font-light fluid-font max-w-[640px] mt-[22px] hidden md:block" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне, и мы вместе выберем комфортный вариант для вашего старта
 
       div(class="authForm flex flex-col mt-12 md:mt-[217px] max-w-[640px]" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
         FloatingInput(
@@ -43,7 +43,28 @@ section(class="section-nine w-full h-full pt-[62px] pb-[80px]" id="section-nine"
         BaseButton(class="btn-orange mt-16 max-w-fit" @click="login" :disabled="isLoading")
           span(class="z-10 relative") {{ isLoading ? 'Отправка...' : 'Связаться' }}
 
-        .text(class="font-light fluid-font max-w-[355px] mt-12 md:mt-[164px]" style="--font-min: 13; --font-mid: 14; --font-max: 22;" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") С заботой о вашем результате, Ваш личный wellness-консультант
+        .flex(class="items-start sm:items-center justify-between mt-12 md:mt-[164px] flex-col sm:flex-row")
+          .text(class="font-light fluid-font max-w-[355px]" style="--font-min: 13; --font-mid: 14; --font-max: 22;" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") С заботой о вашем результате, Ваш личный wellness-консультант
+          
+          .socials(class="flex mt-10 sm:mt-0 pl-0 sm:pl-10" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }")
+            a(:href="`https://t.me/${userStore.user?.telegram}`" v-if="userStore.user?.telegram")
+              svg(viewBox="0 0 26 23")
+                use(href="/src/assets/images/img-svg.svg#telegram") 
+            a(:href="`https://instagram.com/${userStore.user?.instagram}`" v-if="userStore.user?.instagram")
+              svg(viewBox="0 0 27 27")
+                use(href="/src/assets/images/img-svg.svg#instagram") 
+            a(:href="`https://vk.com/${userStore.user?.vk}`" v-if="userStore.user?.vk")
+              svg(viewBox="0 0 29 19")
+                use(href="/src/assets/images/img-svg.svg#vk") 
+            a(:href="`https://wa.me/${userStore.user?.whatsapp}`" v-if="userStore.user?.whatsapp")
+              svg(viewBox="0 0 25 25")
+                use(href="/src/assets/images/img-svg.svg#whats") 
+            a(:href="`https://viber.me/${userStore.user?.viber}`" v-if="userStore.user?.viber")
+              svg(viewBox="0 0 25 27")
+                use(href="/src/assets/images/img-svg.svg#viber") 
+            a(:href="`https://linkedin.com/in/${userStore.user?.linkedin}`" v-if="userStore.user?.linkedin")
+              svg(viewBox="0 0 25 24")
+                use(href="/src/assets/images/img-svg.svg#in") 
   
 </template>
 
@@ -156,4 +177,18 @@ const login = async () => {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.socials {
+  a {
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  svg {
+    max-width: 26px;
+    min-width: 20px;
+  }
+}
+</style>

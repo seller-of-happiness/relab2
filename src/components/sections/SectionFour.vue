@@ -35,7 +35,7 @@ section(class="section-four w-full h-full px-10 xl:pb-[96px] ")
 
         .card-wrapper(class="md:mb-[346px]")
           .card(class="rounded-xl m-0.5 p-6 relative z-10 shadow-gradient-warm")
-            div(class="text-gray-400 mb-2" style="--font-min: 12; --font-mid: 13; --font-max: 20; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") 1 месяц
+            div(class="text-gray-400 mb-2" style="--font-min: 12; --font-mid: 13; --font-max: 20; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") 2 недели
             .text(class="mb-3 xl:mb-[58px] fluid-font" style="--font-min: 14; --font-mid: 18; --font-max: 28; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") Мягко очистим и обновим
             .text(class="fluid-font" style="--font-min: 12; --font-mid: 13; --font-max: 20; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2")
               |Вы почувствуете легкость и энергию, а я помогу пройти этот процесс максимально комфортно и эффективно

@@ -10,9 +10,9 @@ section(class="section-six w-full h-full mt-10 pb-[26px] xl:pb-10" id="program")
         .text(class="fluid-font mt-2.5 font-light hidden md:block" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2;" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-06s' }") Я и еще тысячи людей уже прошли wellness-трек и получили результаты. Но мое доверие к продуктам Coral Club больше основано на: 
 
       .right(class="w-full max-w-[1160px] md:block image-container rounded-xl" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }")
-        picture
-          //- source(srcset="@/assets/images/SectionEight.webp" type="image/webp")
-          img(src="@/assets/images/SectionEight.png" alt="" class="section-image")
+        picture(class="mt-16 tb:mt-8")
+          source(srcset="@/assets/images/SectionEight.webp" type="image/webp")
+          img(src="@/assets/images/SectionEight.png" alt="" class="section-image" loading="lazy")
     .flex(class="flex-col mt-10 lg:mt-[15px] xl:mt-[118px]")
       .flex(class="flex-col md:flex-row justify-between pt-4 min-h-[90px] xl:min-h-[146px] md:border-b border-[#d7d5d8] lg:gap-[35.4%] xl:gap-0 mb-16 md:mb-0 item-row" v-for="(item, index) in items" :key="index" :class="{ 'md:border-t': index == 0 }" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-03s' }")
         .left(class="mr-6 lg:mr-0 pb-4 md:pb-0 mb-4 md:mb-0 border-b border-[#d7d5d8] md:border-0")

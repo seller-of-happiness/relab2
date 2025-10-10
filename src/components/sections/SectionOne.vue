@@ -42,7 +42,7 @@ const scrollTo = (id: string) => {
 
 <style scoped lang="scss">
 .section-one {
-  background: url(/src/assets/images/section-1-bg.jpg) no-repeat;
+  background: url(/src/assets/images/section-1-bg.webp) no-repeat;
   background-size: cover;
   background-position: right;
 }

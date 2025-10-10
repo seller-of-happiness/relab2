@@ -14,7 +14,9 @@ section(class="section-three w-full h-full px-10 pt-9 xl:pt-[18px] pb-[34px] xl:
 
       .text(class="font-light bottom-text fluid-font tb:max-w-[547px] mt-16 tb:mt-[154px] mb-10 md:mb-0 xl:mt-[220px]" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2;") Wellness-трек — практическая реализация этой концепции, которая помогает закрепить этот подход в реальной жизни.
     .middle(class="w-full tb:w-1/3 min-w-auto  max-w-[700px]" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-03s' }")
-      img(src="@/assets/images/section-3-1.png", alt="alt" class="mt-16 tb:mt-8")
+      picture(class="mt-16 tb:mt-8")
+        source(srcset="@/assets/images/section-3-1.webp" type="image/webp")
+        img(src="@/assets/images/section-3-1.png" alt="" class="section-image" loading="lazy")
     .right(class="w-1/3 pl-[4%] hidden tb:block" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-09s' }")
       .item(class="fluid-font py-2 px-[26px] xl:py-5 xl:px-10 border border-gray rounded-full bg-white text-[rgba(40, 40, 40, 1)] max-w-[506px] mt-[68px] xl:mt-[94px] xl:min-w-[335px]" style="--font-min: 14; --font-mid: 14; --font-max: 22; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") Только так организм может сохранять устойчивость и&nbsp;ресурс в&nbsp;долгосрочной перспективе.
 
