@@ -1,5 +1,5 @@
 <template lang="pug">
-section(class="section-six w-full h-full pt-[102px] xl:pt-[193px] pb-[110px]" id="section-six")
+section(class="section-six w-full h-full pt-[102px] xl:pt-[193px] pb-20 md:pb-[110px]" id="section-six")
   .title(class="fluid-font mt-16 md:mt-0" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }") Как вы хотите начать?
 
   .items(class="gap-x-5 tb:gap-x-[50px] grid grid-cols-1 md:grid-cols-3 mt-[80px] xl:mt-[147px]")
@@ -30,8 +30,12 @@ section(class="section-six w-full h-full pt-[102px] xl:pt-[193px] pb-[110px]" id
             source(srcset="@/assets/images/section-6-3.webp" type="image/webp")
             img(src="@/assets/images/section-6-3.png" alt="" class="section-image" loading="lazy")
           .text(class="fluid-font mt-8" style="--font-min: 14; --font-mid: 14; --font-max: 22; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") Бесплатная 15-минутная консультация. Я отвечу на ваши вопросы и помогу принять решение.
-        BaseButton(class="btn-orange mt-6 w-fit" @click="scrollTo('section-nine')")
-          span(class="z-10 relative") Связаться
+
+  .line(class="w-full border border-gray mt-12" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
+
+  .flex.justify-center
+    BaseButton(class="btn-orange mt-8 w-fit" @click="openAuthModal()")
+      span(class="z-10 relative font-light") Связаться
 
 </template>
 
@@ -39,6 +43,13 @@ section(class="section-six w-full h-full pt-[102px] xl:pt-[193px] pb-[110px]" id
 import BaseButton from '@/components/ui/BaseButton.vue'
 import { computed } from 'vue'
 import { useUserStore } from '@/store/userStore'
+import { useModal } from '@/composables/useModal'
+
+const { openModal } = useModal()
+
+const openAuthModal = () => {
+  openModal({ type: 'auth' })
+}
 
 const userStore = useUserStore()
 

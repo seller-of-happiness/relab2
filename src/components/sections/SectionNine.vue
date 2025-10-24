@@ -1,5 +1,5 @@
 <template lang="pug">
-section(class="section-nine w-full h-full pt-[62px] pb-[80px]" id="section-nine")
+section(class="section-nine w-full h-full pt-0 md:pt-[62px] pb-[80px]" id="section-nine")
   .flex(class="flex-col md:flex-row")
     .title(class="fluid-font block md:hidden" style="--font-min: 32; --font-mid: 52; --font-max: 80; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") Время выбирать себя
     .text(class="font-light fluid-font max-w-[640px] mt-[22px] block md:hidden" style="--font-min: 14; --font-mid: 16; --font-max: 24; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }") Напишите мне, и мы вместе выберем комфортный вариант для вашего старта
@@ -36,35 +36,40 @@ section(class="section-nine w-full h-full pt-[62px] pb-[80px]" id="section-nine"
           @focus="clearError()"
         )
 
-        // Отображение ошибки
-        .error-message(v-if="error" class="text-red-500 text-sm mt-2 mb-4")
-          | {{ error }}
+      ConsentCheckbox(
+        v-model="consent"
+        v-model:privacy-model-value="privacyConsent"
+      )
 
-        BaseButton(class="btn-orange mt-16 max-w-fit" @click="login" :disabled="isLoading")
-          span(class="z-10 relative") {{ isLoading ? 'Отправка...' : 'Связаться' }}
+      // Отображение ошибки
+      .error-message(v-if="error" class="text-red-500 text-sm mt-2 mb-4")
+        | {{ error }}
 
-        .flex(class="items-start sm:items-center justify-between mt-12 md:mt-[164px] flex-col sm:flex-row")
-          .text(class="font-light fluid-font max-w-[355px]" style="--font-min: 13; --font-mid: 14; --font-max: 22;" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") С заботой о вашем результате, Ваш личный wellness-консультант
-          
-          .socials(class="flex mt-10 sm:mt-0 pl-0 sm:pl-10" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }")
-            a(:href="`https://t.me/${userStore.user?.telegram}`" v-if="userStore.user?.telegram")
-              svg(viewBox="0 0 26 23")
-                use(href="/src/assets/images/img-svg.svg#telegram") 
-            a(:href="`https://instagram.com/${userStore.user?.instagram}`" v-if="userStore.user?.instagram")
-              svg(viewBox="0 0 27 27")
-                use(href="/src/assets/images/img-svg.svg#instagram") 
-            a(:href="`https://vk.com/${userStore.user?.vk}`" v-if="userStore.user?.vk")
-              svg(viewBox="0 0 29 19")
-                use(href="/src/assets/images/img-svg.svg#vk") 
-            a(:href="`https://wa.me/${userStore.user?.whatsapp}`" v-if="userStore.user?.whatsapp")
-              svg(viewBox="0 0 25 25")
-                use(href="/src/assets/images/img-svg.svg#whats") 
-            a(:href="`https://viber.me/${userStore.user?.viber}`" v-if="userStore.user?.viber")
-              svg(viewBox="0 0 25 27")
-                use(href="/src/assets/images/img-svg.svg#viber") 
-            a(:href="`https://linkedin.com/in/${userStore.user?.linkedin}`" v-if="userStore.user?.linkedin")
-              svg(viewBox="0 0 25 24")
-                use(href="/src/assets/images/img-svg.svg#in") 
+      BaseButton(class="btn-orange mt-16 max-w-fit" @click="login" :disabled="isLoading")
+        span(class="z-10 relative") {{ isLoading ? 'Отправка...' : 'Связаться' }}
+
+      .flex(class="items-start sm:items-center justify-between mt-12 md:mt-[164px] flex-col sm:flex-row")
+        .text(class="font-light fluid-font max-w-[355px]" style="--font-min: 13; --font-mid: 14; --font-max: 22;" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }") С заботой о вашем результате, Ваш личный wellness-консультант
+        
+        .socials(class="flex mt-10 sm:mt-0 pl-0 sm:pl-10" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-06s' }")
+          a(:href="`https://t.me/${userStore.user?.telegram}`" v-if="userStore.user?.telegram")
+            svg(viewBox="0 0 26 23")
+              use(href="/src/assets/images/img-svg.svg#telegram") 
+          a(:href="`https://wa.me/${userStore.user?.whatsapp}`" v-if="userStore.user?.whatsapp")
+            svg(viewBox="0 0 25 25")
+              use(href="/src/assets/images/img-svg.svg#whats") 
+          a(:href="`https://instagram.com/${userStore.user?.instagram}`" v-if="userStore.user?.instagram")
+            svg(viewBox="0 0 27 27")
+              use(href="/src/assets/images/img-svg.svg#instagram") 
+          a(:href="`https://vk.com/${userStore.user?.vk}`" v-if="userStore.user?.vk")
+            svg(viewBox="0 0 29 19")
+              use(href="/src/assets/images/img-svg.svg#vk") 
+          a(:href="`https://viber.me/${userStore.user?.viber}`" v-if="userStore.user?.viber")
+            svg(viewBox="0 0 25 27")
+              use(href="/src/assets/images/img-svg.svg#viber") 
+          a(:href="`https://linkedin.com/in/${userStore.user?.linkedin}`" v-if="userStore.user?.linkedin")
+            svg(viewBox="0 0 25 24")
+              use(href="/src/assets/images/img-svg.svg#in") 
   
 </template>
 
@@ -72,6 +77,7 @@ section(class="section-nine w-full h-full pt-[62px] pb-[80px]" id="section-nine"
 import { ref } from 'vue'
 import FloatingInput from '@/components/ui/FloatingInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import ConsentCheckbox from '@/components/ui/ConsentCheckbox.vue'
 import { useUserStore } from '@/store/userStore'
 import { sendEmail } from '@/utils/sendEmail'
 import { useModal } from '@/composables/useModal'
@@ -81,6 +87,8 @@ const userStore = useUserStore()
 const name = ref('')
 const phone = ref('')
 const email = ref('')
+const consent = ref(false)
+const privacyConsent = ref(false)
 const isLoading = ref(false)
 const error = ref('')
 
@@ -132,6 +140,16 @@ const login = async () => {
     return
   }
 
+  if (!consent.value) {
+    error.value = 'Необходимо дать согласие на обработку персональных данных'
+    return
+  }
+
+  if (!privacyConsent.value) {
+    error.value = 'Необходимо ознакомиться с политикой конфиденциальности'
+    return
+  }
+
   // Устанавливаем состояние загрузки
   isLoading.value = true
 
@@ -168,6 +186,8 @@ const login = async () => {
     name.value = ''
     phone.value = ''
     email.value = ''
+    consent.value = false
+    privacyConsent.value = false
   } catch (err) {
     error.value = 'Произошла ошибка при отправке формы. Попробуйте еще раз.'
     console.error('Ошибка отправки формы:', err)

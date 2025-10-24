@@ -6,7 +6,7 @@ header(
       use(href="/src/assets/images/img-svg.svg#logo-header")
   svg(viewBox="0 0 134 32" class="max-w-[56px] md:max-w-[130px]")
     use(href="/src/assets/images/img-svg.svg#logo-coral")
-  BaseButton(class="btn-text fluid-font font-light !text-xs md:-mt-[15px]" style="--font-min: 12; --font-max: 22;" @click="openAuthModal()")
+  BaseButton(class="btn-text fluid-font font-light md:-mt-[15px]" style="--font-min: 12; --font-max: 22;" @click="openAuthModal()")
     span(class="z-10 relative") Связаться →
 </template>
 

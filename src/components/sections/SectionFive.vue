@@ -2,20 +2,34 @@
 section(class="section-five w-full h-full pt-10 xl:pt-[80px] px-10")
   .title(class="fluid-font" style="--font-min: 32; --font-mid: 60; --font-max: 90; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }") Wellness-трек со мной — это
   div(class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-5 tb:gap-10 xl:gap-[60px] mt-[54px] xl:mt-[97px]")
-    .item(class="px-[30px] py-6 xl:pt-10 xl:pb-[60px] w-full max-w-full rounded-xl" v-for="(item, index) in items" :key="index" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: item.delay }")
+    .item(class="px-[30px] py-6 w-full max-w-full rounded-xl" v-for="(item, index) in items" :key="index" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: item.delay }")
       .wrapper(class="flex flex-col")
-        SvgIcon(:name="item.svg" class="text-white w-full max-w-[40px] xl:max-w-[60px]")
-        .name(class="fluid-font mt-4 xl:mt-8" style="--font-min: 17; --font-mid: 18; --font-max: 28; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") {{ item.name }}
-        .text(class="fluid-font mt-1 xl:mt-3" style="--font-min: 12; --font-mid: 13; --font-max: 20; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-html="item.text")
+        SvgIcon(:name="item.svg" class="text-white max-w-fit max-h-12")
+        .name(class="fluid-font mt-6" style="--font-min: 17; --font-mid: 18; --font-max: 28; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") {{ item.name }}
+        .text(class="fluid-font mt-6" style="--font-min: 12; --font-mid: 13; --font-max: 20; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-html="item.text")
 
-  .text(class="mb-10 md:mb-0 mt-10 xl:mt-[130px] fluid-font max-w-[715px]" style="--font-min: 16; --font-mid: 18; --font-max: 28; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-03s' }") Моя задача — сделать ваш wellness-трек простым, понятным и результативным. Чтобы вам оставалось только получать удовольствие от процесса и реальные результаты.
+  .text(class="mb-10 md:mb-0 mt-10 xl:mt-[130px] fluid-font font-light text-left md:text-center" style="--font-min: 16; --font-mid: 18; --font-max: 28; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-03s' }") Моя цель — сделать wellness-трек понятным, приятным и результативным. 
+    br(class="hidden tb:block")
+    | Чтобы вы не теряли мотивацию, а видели изменения и гордились ими.
+  
+  .flex(class="justify-start md:justify-center w-full")
+    BaseButton(class="btn-orange mt-8" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-06s' }" @click="openAuthModal()")
+      span(class="z-10 relative") Участвую
 
-  .line(class="w-full border border-gray mt-[21px]" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
+  .line(class="w-full border border-gray mt-8" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 import SvgIcon from '@/components/ui/SvgIcon.vue'
+import { useModal } from '@/composables/useModal'
+
+const { openModal } = useModal()
+
+const openAuthModal = () => {
+  openModal({ type: 'auth' })
+}
 
 interface Item {
   svg: string

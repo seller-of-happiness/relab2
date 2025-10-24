@@ -64,9 +64,8 @@ withDefaults(defineProps<Props>(), {
   &:hover {
     opacity: 0.9;
     transform: translateY(-1px);
-    filter: drop-shadow(0 6px 16px rgba(255, 130, 54, 0.5))
-      drop-shadow(0 4px 10px rgba(255, 205, 0, 0.4))
-      drop-shadow(0 2px 6px rgba(254, 182, 195, 0.3));
+    box-shadow: 0 14px 28px rgba(255, 130, 54, 0.25),
+      0 10px 20px rgba(255, 205, 0, 0.22), 0 6px 12px rgba(254, 182, 195, 0.18);
   }
 
   &:active {

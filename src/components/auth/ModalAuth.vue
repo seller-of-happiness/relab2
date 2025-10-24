@@ -2,7 +2,7 @@
 .flex(class="flex-col md:flex-row wrapper-modal overflow-y-auto overflow-x-hidden")
 
 
-    .left(class="w-full md:w-[45%] flex justify-center items-center" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
+    .left(class="w-full md:w-[45%] hidden sm:flex justify-center items-center" v-animate-on-scroll="{ animation: 'animate__fadeInLeft', delay: 'animate__delay-03s' }")
       img(:src="userStore.user?.avatar", alt="alt" class="max-w-[150px] md:max-w-[400px] w-full h-auto rounded-full")
 
     .right(class="w-full md:w-[55%] md:pl-[2.87%] h-full flex flex-col justify-between")
@@ -35,6 +35,11 @@
           @focus="clearError()"
         )
 
+        ConsentCheckbox(
+          v-model="consent"
+          v-model:privacy-model-value="privacyConsent"
+        )
+
         .error-message(v-if="error" class="text-red-500 text-sm mt-2")
           | {{ error }}
 
@@ -46,15 +51,15 @@
             a(:href="`https://t.me/${userStore.user?.telegram}`" v-if="userStore.user?.telegram")
               svg(viewBox="0 0 26 23")
                 use(href="/src/assets/images/img-svg.svg#telegram") 
+            a(:href="`https://wa.me/${userStore.user?.whatsapp}`" v-if="userStore.user?.whatsapp")
+              svg(viewBox="0 0 25 25")
+                use(href="/src/assets/images/img-svg.svg#whats") 
             a(:href="`https://instagram.com/${userStore.user?.instagram}`" v-if="userStore.user?.instagram")
               svg(viewBox="0 0 27 27")
                 use(href="/src/assets/images/img-svg.svg#instagram") 
             a(:href="`https://vk.com/${userStore.user?.vk}`" v-if="userStore.user?.vk")
               svg(viewBox="0 0 29 19")
                 use(href="/src/assets/images/img-svg.svg#vk") 
-            a(:href="`https://wa.me/${userStore.user?.whatsapp}`" v-if="userStore.user?.whatsapp")
-              svg(viewBox="0 0 25 25")
-                use(href="/src/assets/images/img-svg.svg#whats") 
             a(:href="`https://viber.me/${userStore.user?.viber}`" v-if="userStore.user?.viber")
               svg(viewBox="0 0 25 27")
                 use(href="/src/assets/images/img-svg.svg#viber") 
@@ -67,6 +72,7 @@
 import { ref } from 'vue'
 import FloatingInput from '@/components/ui/FloatingInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import ConsentCheckbox from '@/components/ui/ConsentCheckbox.vue'
 import { useModal } from '@/composables/useModal'
 import { useUserStore } from '@/store/userStore'
 import { sendEmail } from '@/utils/sendEmail'
@@ -77,6 +83,8 @@ const { closeModal, openModal } = useModal()
 const name = ref('')
 const phone = ref('')
 const email = ref('')
+const consent = ref(false)
+const privacyConsent = ref(false)
 const isLoading = ref(false)
 const error = ref('')
 
@@ -122,6 +130,16 @@ const login = async () => {
     return
   }
 
+  if (!consent.value) {
+    error.value = 'Необходимо дать согласие на обработку персональных данных'
+    return
+  }
+
+  if (!privacyConsent.value) {
+    error.value = 'Необходимо ознакомиться с политикой конфиденциальности'
+    return
+  }
+
   isLoading.value = true
   try {
     const recipientEmail = userStore.user?.email || ''
@@ -162,6 +180,8 @@ const login = async () => {
     name.value = ''
     phone.value = ''
     email.value = ''
+    consent.value = false
+    privacyConsent.value = false
   } catch (err) {
     error.value = 'Произошла ошибка при отправке формы. Попробуйте еще раз.'
     console.error('Ошибка отправки формы:', err)
