@@ -10,8 +10,8 @@ section(class="section-six w-full h-full pt-[102px] xl:pt-[193px] pb-20 md:pb-[1
             source(srcset="@/assets/images/section-6-1.webp" type="image/webp")
             img(src="@/assets/images/section-6-1.png" alt="" class="section-image" loading="lazy")
           .text(class="fluid-font mt-8 -tracking-05" style="--font-min: 14; --font-mid: 14; --font-max: 22; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") Первый шаг к здоровью на клеточном уровне на 30 дней. Идеально, чтобы понять процесс и почувствовать первые изменения.
-        //- BaseButton(class="btn-ghost mt-6 w-fit" :link="true" :url="url")
-        //-   span(class="z-10 relative") Купить
+        BaseButton(class="btn-ghost mt-6 w-fit" :link="true" :url="url")
+          span(class="z-10 relative") Купить
 
       .item(class="flex flex-col justify-between mb-7 md:mb-0" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-06s' }")
         div
@@ -20,8 +20,8 @@ section(class="section-six w-full h-full pt-[102px] xl:pt-[193px] pb-20 md:pb-[1
             source(srcset="@/assets/images/section-6-2.webp" type="image/webp")
             img(src="@/assets/images/section-6-2.png" alt="" class="section-image" loading="lazy")
           .text(class="fluid-font mt-8" style="--font-min: 14; --font-mid: 14; --font-max: 22; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") Все 3 этапа для глубокого и комплексного преображения самочувствия под моим постоянным руководством.
-        //- BaseButton(class="btn-ghost mt-6 w-fit" :link="true" :url="urlBIG")
-        //-   span(class="z-10 relative") Начать полный путь
+        BaseButton(class="btn-ghost mt-6 w-fit" :link="true" :url="urlBIG")
+          span(class="z-10 relative") Начать полный путь
 
       .item(class="flex flex-col justify-between mb-7 md:mb-0" v-animate-on-scroll="{ animation: 'animate__fadeInUp', delay: 'animate__delay-09s' }")
         div
@@ -30,12 +30,14 @@ section(class="section-six w-full h-full pt-[102px] xl:pt-[193px] pb-20 md:pb-[1
             source(srcset="@/assets/images/section-6-3.webp" type="image/webp")
             img(src="@/assets/images/section-6-3.png" alt="" class="section-image" loading="lazy")
           .text(class="fluid-font mt-8" style="--font-min: 14; --font-mid: 14; --font-max: 22; --lh-min: 1.0;  --lh-mid: 1.2; --lh-max: 1.2") Бесплатная 15-минутная консультация. Я отвечу на ваши вопросы и помогу принять решение.
+        BaseButton(class="btn-orange mt-8 w-fit" @click="openAuthModal()")
+          span(class="z-10 relative font-light") Связаться
 
-  .line(class="w-full border border-gray mt-12" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
+  //- .line(class="w-full border border-gray mt-12" v-animate-on-scroll="{ animation: 'animate__fadeInRight', delay: 'animate__delay-03s' }")
 
-  .flex.justify-center
-    BaseButton(class="btn-orange mt-8 w-fit" @click="openAuthModal()")
-      span(class="z-10 relative font-light") Связаться
+  //- .flex.justify-center
+  //-   BaseButton(class="btn-orange mt-8 w-fit" @click="openAuthModal()")
+  //-     span(class="z-10 relative font-light") Связаться
 
 </template>
 
